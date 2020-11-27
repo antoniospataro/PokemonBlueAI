@@ -1,0 +1,97 @@
+plStr(dragon,dragon) :- plType(dragon), enmType(dragon).
+plStr(ice,dragon) :- plType(ice), enmType(dragon).
+plWeak(grass,dragon) :- plType(grass), enmType(dragon).
+plWeak(electric,dragon) :- plType(electric), enmType(dragon).
+plWeak(water,dragon) :- plType(water), enmType(dragon).
+plWeak(fire,dragon) :- plType(fire), enmType(dragon).
+plNtr(ghost,psychic) :- plType(ghost), enmType(psychic).
+plNtr(ghost,normal) :- plType(ghost), enmType(normal).
+plStr(rock,ice) :- plType(rock), enmType(ice).
+plStr(rock,bug) :- plType(rock), enmType(bug).
+plStr(rock,flying) :- plType(rock), enmType(flying).
+plWeak(rock,ground) :- plType(rock), enmType(ground).
+plWeak(rock,fighting) :- plType(rock), enmType(fighting).
+plStr(rock,fire) :- plType(rock), enmType(fire).
+plStr(bug,poison) :- plType(bug), enmType(poison).
+plWeak(bug,ghost) :- plType(bug), enmType(ghost).
+plStr(bug,psychic) :- plType(bug), enmType(psychic).
+plWeak(bug,flying) :- plType(bug), enmType(flying).
+plWeak(bug,fighting) :- plType(bug), enmType(fighting).
+plStr(bug,grass) :- plType(bug), enmType(grass).
+plWeak(bug,fire) :- plType(bug), enmType(fire).
+plStr(psychic,poison) :- plType(psychic), enmType(poison).
+plStr(psychic,fighting) :- plType(psychic), enmType(fighting).
+plWeak(flying,rock) :- plType(flying), enmType(rock).
+plStr(flying,grass) :- plType(flying), enmType(grass).
+plStr(flying,bug) :- plType(flying), enmType(bug).
+plStr(flying,fighting) :- plType(flying), enmType(fighting).
+plWeak(flying,electric) :- plType(flying), enmType(electric).
+plStr(ground,poison) :- plType(ground), enmType(poison).
+plStr(ground,rock) :- plType(ground), enmType(rock).
+plWeak(ground,bug) :- plType(ground), enmType(bug).
+plWeak(ground,grass) :- plType(ground), enmType(grass).
+plStr(ground,electric) :- plType(ground), enmType(electric).
+plStr(ground,fire) :- plType(ground), enmType(fire).
+plWeak(poison,ghost) :- plType(poison), enmType(ghost).
+plWeak(poison,rock) :- plType(poison), enmType(rock).
+plStr(poison,bug) :- plType(poison), enmType(bug).
+plWeak(poison,ground) :- plType(poison), enmType(ground).
+plWeak(poison,poison) :- plType(poison), enmType(poison).
+plStr(poison,grass) :- plType(poison), enmType(grass).
+plNtr(fighting,ghost) :- plType(fighting), enmType(ghost).
+plStr(fighting,ice) :- plType(fighting), enmType(ice).
+plStr(fighting,rock) :- plType(fighting), enmType(rock).
+plWeak(fighting,bug) :- plType(fighting), enmType(bug).
+plWeak(fighting,psychic) :- plType(fighting), enmType(psychic).
+plWeak(fighting,flying) :- plType(fighting), enmType(flying).
+plWeak(fighting,poison) :- plType(fighting), enmType(poison).
+plStr(fighting,normal) :- plType(fighting), enmType(normal).
+plStr(ice,flying) :- plType(ice), enmType(flying).
+plStr(ice,ground) :- plType(ice), enmType(ground).
+plStr(ice,grass) :- plType(ice), enmType(grass).
+plWeak(ice,water) :- plType(ice), enmType(water).
+plWeak(grass,flying) :- plType(grass), enmType(flying).
+plStr(grass,rock) :- plType(grass), enmType(rock).
+plWeak(grass,poison) :- plType(grass), enmType(poison).
+plStr(grass,ground) :- plType(grass), enmType(ground).
+plStr(electric,flying) :- plType(electric), enmType(flying).
+plNtr(electric,ground) :- plType(electric), enmType(ground).
+plStr(water,ground) :- plType(water), enmType(ground).
+plWeak(fire,rock) :- plType(fire), enmType(rock).
+plStr(fire,bug) :- plType(fire), enmType(bug).
+plStr(ghost,ghost) :- plType(ghost), enmType(ghost).
+plNtr(normal,ghost) :- plType(normal), enmType(ghost).
+plWeak(normal,rock) :- plType(normal), enmType(rock).
+plWeak(electric,grass) :- plType(electric), enmType(grass).
+plWeak(water,grass) :- plType(water), enmType(grass).
+plWeak(grass,fire) :- plType(grass), enmType(fire).
+plWeak(fire,water) :- plType(fire), enmType(water).
+plWeak(psychic,psychic) :- plType(psychic), enmType(psychic).
+plWeak(grass,grass) :- plType(grass), enmType(grass).
+plWeak(ice,ice) :- plType(ice), enmType(ice).
+plWeak(electric,electric) :- plType(electric), enmType(electric).
+plWeak(fire,fire) :- plType(fire), enmType(fire).
+plWeak(water,water) :- plType(water), enmType(water).
+plNtr(ground,flying) :- plType(ground), enmType(flying).
+plStr(water,rock) :- plType(water), enmType(rock).
+plStr(electric,water) :- plType(electric), enmType(water).
+plStr(grass,water) :- plType(grass), enmType(water).
+plStr(fire,ice) :- plType(fire), enmType(ice).
+plStr(fire,grass) :- plType(fire), enmType(grass).
+plStr(water,fire) :- plType(water), enmType(fire).
+
+
+choiceMv(N,X,A) | notChoiceMv(N,X,A) :- plMvType(N,X,A).
+:- #count{X,A: choiceMv(N,X,A)} != 1.
+:-choiceMv(N,X,A), A=0.
+changePokemon :- plWeak(X,Y), plType(X), enmType(Y), HP(Z), Z<=80.
+:~choiceMv(N,X,A), plStr(X,Y), enmType(Y). [1@1]
+:~choiceMv(N,X,A), enmType(Y), not plStr(X,Y), not plNtr(X,Y), not plWeak(X,Y).[2@1]
+:~choiceMv(N,X,A), plWeak(X,Y), enmType(Y). [3@1, X]
+:~choiceMv(N,X,A), plNtr(X,Y), enmType(Y). [4@1,X]
+changePokemon :- choiceMv(N,X,A), plNtr(X,Y).
+changePokemon :- choiceMv(N,X,A), plWeak(X,Y).
+
+
+
+

@@ -1,0 +1,7 @@
+state(a).   state(b). state(c). state(d).
+border(a,b). border(b,a). border(a,c).
+border(c,a). border(c,d). border(d,c).
+
+col(X,red)|col(X,blue)|col(X,green) :- state(X).
+:-border(X,Y),col(X,C),col(Y,C).
+
