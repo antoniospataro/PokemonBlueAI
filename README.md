@@ -1,4 +1,6 @@
 # PokemonBlueAI
+
+git LFS necessary to clone repo.
 Pokemon Blue Battle AI (only for USA Pokemon Blue Version)
 
 Currently the AI chooses only the best moves for current enemy. After my last first degree exam, I'll write a complete AI. (I think only with other 2 work days) 
